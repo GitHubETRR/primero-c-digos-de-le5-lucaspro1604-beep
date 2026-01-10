@@ -1,0 +1,69 @@
+#include <stdio.h>
+
+int vida = 100;
+
+void mostrarVida() {
+    printf("\nTu vida actual es: %d puntos.\n", vida);
+}
+
+void curar() {
+    int puntos;
+    printf("\n¿Cuántos puntos de vida quieres recuperar?: ");
+    scanf("%d", &puntos);
+
+    if (puntos > 0) {
+        vida += puntos;
+        printf("Te has curado! Tu nueva vida es: %d puntos.\n", vida);
+    } else {
+        printf("Cantidad inválida.\n");
+    }
+}
+
+void recibirDano() {
+    int dano;
+    printf("\n¿Cuántos puntos de daño recibes?: ");
+    scanf("%d", &dano);
+
+    if (dano > 0 && dano <= vida) {
+        vida -= dano;
+        printf("Has recibido daño, tu vida actual es: %d puntos.\n", vida);
+    } else if (dano > vida) {
+        printf("Ese daño es demasiado alto, no tenés tanta vida.\n");
+    } else {
+        printf("Monto inválido.\n");
+    }
+}
+
+int main() {
+    int opcion;
+
+    do {
+        printf("\n--- MENU DEL AVENTURERO ---\n");
+        printf("1. Mostrar vida\n");
+        printf("2. Curarse\n");
+        printf("3. Recibir daño\n");
+        printf("4. Salir\n");
+        printf("Elija una opcion: ");
+        scanf("%d", &opcion);
+
+        switch (opcion) {
+            case 1:
+                mostrarVida();
+                break;
+            case 2:
+                curar();
+                break;
+            case 3:
+                recibirDano();
+                break;
+            case 4:
+                printf("\nFin de la aventura. ¡Hasta luego!\n");
+                break;
+            default:
+                printf("\nOpción inválida, intente nuevamente.\n");
+        }
+
+    } while (opcion != 4);
+
+    return 0;
+}

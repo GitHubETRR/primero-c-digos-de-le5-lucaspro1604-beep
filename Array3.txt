@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define LIMITE 50
+
+void generaralazar(int lista[]);
+int contarmayor(int lista[]);
+void mostrarvalores(int lista[]);
+
+int main() {
+    int arreglo[LIMITE];
+
+    generaralazar(arreglo);
+    mostrarvalores(arreglo);
+
+    int repeticiones = contarmayor(arreglo);
+    printf("\nEl mayor valor se repite %d veces\n", repeticiones);
+
+    return 0;
+}
+
+void generaralazar(int lista[]) {
+    srand(time(NULL));
+    for (int i = 0; i < LIMITE; i++) {
+        lista[i] = rand() % 11 + 10; // elige valores entre 10 y 20
+    }
+}
+
+void mostrarvalores(int lista[]) {
+    printf("valores:\n");
+    for (int i = 0; i < LIMITE; i++) {
+        printf("valor[%d] = %d\n", i, lista[i]);
+    }
+}
+int contarmayor(int lista[]) {
+    int mayor = lista[0];
+    int contador = 0;
+    for (int i = 1; i < LIMITE; i++) {
+        if (lista[i] > mayor) {
+            mayor = lista[i];
+        }
+    }
+    for (int i = 0; i < LIMITE; i++) {
+        if (lista[i] == mayor) {
+            contador++;
+}
+    }
+    return contador;
+    }

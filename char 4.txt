@@ -1,0 +1,47 @@
+/*
+  Hacer un programa que capture un texto y por medio de una función llamada Invertir
+  transforme el mismo en otra cadena al revés y lo devuelva al programa principal, cada función debe ser creada por uds.
+*/
+
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#define LARGO_TEXTO 100
+
+void Invertir(char*);
+
+int main()
+{   
+    //Definimos una cadena de texto.
+    char texto[LARGO_TEXTO];
+    
+    //Pedimos al usuario que ingrese la cadena de texto.
+    printf("Ingrese un texto para invertir su orden: ");
+    fgets(texto, 100, stdin);
+    
+    Invertir(texto);
+    
+    printf("Su texto invertido es: %s", texto);
+    
+    return 0;
+}
+
+//Creamos la función invertir, que invierte la cadena de texto.
+void Invertir(char* texto){
+    
+    //Obtenemos el largo de la cadena y creamos una cadena auxiliar.
+    int largo = strlen(texto);
+    char aux[LARGO_TEXTO];
+    
+    //Obtenemos la cadena invertida en la cadena auxiliar.
+    int j = 0;
+    for(int i = largo-1; i>=0; i--){
+        aux[j] = texto[i];
+        j++;
+    }
+    
+    //Copiamos el contenido de la cadena auxiliar en la cadena original.
+    for(int i = 0; i < largo; i++){
+        texto[i] = aux[i];
+    }
+}
